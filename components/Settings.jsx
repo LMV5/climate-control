@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { toast } from "react-toastify";
 import Button from "@/components/Button";
+import Message from "@/components/Message";
 
 export default function Settings({ settingsData }) {
   const [temperatureRange, setTemperatureRange] = useState({
@@ -13,6 +13,8 @@ export default function Settings({ settingsData }) {
     min: settingsData?.humidityRange?.min || 30,
     max: settingsData?.humidityRange?.max || 60,
   });
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleTemperatureRangeChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +49,8 @@ export default function Settings({ settingsData }) {
           setHumidityRange(settings.humidityRange);
         }
       } catch (error) {
-        toast.error("Error fetching settings");
+        setMessageType("error");
+        setMessage("Error fetching settings");
       }
     }
 
@@ -80,10 +83,12 @@ export default function Settings({ settingsData }) {
       const result = await response.json();
       console.log("Response from server:", result);
 
-      toast.success("Changes saved");
+      setMessageType("success");
+      setMessage("Changes saved");
     } catch (error) {
       console.error("Error saving settings:", error);
-      toast.error("Cannot save settings");
+      setMessageType("error");
+      setMessage("Cannot save settings");
     }
   }
 
@@ -157,6 +162,8 @@ export default function Settings({ settingsData }) {
             />
           </label>
         </div>
+
+        <Message message={message} type={messageType} />
 
         <div className="mt-5 flex justify-end">
           <Button type="submit" variant="save">

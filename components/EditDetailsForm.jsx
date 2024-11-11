@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import Message from "@/components/Message";
 
 export default function EditDetailsForm({ room }) {
   const [isEditing, setIsEditing] = useState(false);
   const [temperature, setTemperature] = useState(room.currentTemperature);
   const [humidity, setHumidity] = useState(room.currentHumidity);
   const [roomData, setRoomData] = useState(room);
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
   const router = useRouter();
 
   function handleBack() {
@@ -24,7 +26,8 @@ export default function EditDetailsForm({ room }) {
     const newTemperature = +e.target.value;
 
     if (isNaN(newTemperature)) {
-      toast.error("Please enter the number");
+      setMessageType("error");
+      setMessage("Please enter the number");
       return;
     }
 
@@ -35,7 +38,8 @@ export default function EditDetailsForm({ room }) {
     const newHumidity = +e.target.value;
 
     if (isNaN(newHumidity)) {
-      toast.error("Please enter the number");
+      setMessageType("error");
+      setMessage("Please enter the number");
       return;
     }
 
@@ -50,7 +54,8 @@ export default function EditDetailsForm({ room }) {
       temperature < room.temperatureRange.min ||
       temperature > room.temperatureRange.max
     ) {
-      toast.error(
+      setMessageType("error");
+      setMessage(
         "Temperature must be within the allowed range. See the Settings."
       );
       setTemperature(
@@ -66,7 +71,8 @@ export default function EditDetailsForm({ room }) {
       humidity < room.humidityRange.min ||
       humidity > room.humidityRange.max
     ) {
-      toast.error(
+      setMessageType("error");
+      setMessage(
         "Humidity must be within the allowed range. See the Settings."
       );
       setHumidity(
@@ -99,14 +105,18 @@ export default function EditDetailsForm({ room }) {
       const updatedRoom = await response.json();
       setRoomData(updatedRoom);
 
-      toast.success("Changes saved");
+      setMessageType("success");
+      setMessage("Changes saved");
     } catch (error) {
-      toast.error("Cannot update parameters");
+      setMessageType("error");
+      setMessage("Cannot update parameters");
     }
   }
 
   return (
     <>
+      <Message message={message} type={messageType} />
+
       <div className="mt-5 flex justify-between">
         <Button variant="back" onClick={handleBack}>
           &larr; Back
