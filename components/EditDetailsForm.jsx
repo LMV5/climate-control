@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 
@@ -24,7 +24,7 @@ export default function EditDetailsForm({ room }) {
     const newTemperature = +e.target.value;
 
     if (isNaN(newTemperature)) {
-      // toast.error("Please enter the number");
+      toast.error("Please enter the number");
       return;
     }
 
@@ -35,7 +35,7 @@ export default function EditDetailsForm({ room }) {
     const newHumidity = +e.target.value;
 
     if (isNaN(newHumidity)) {
-      // toast.error("Please enter the number");
+      toast.error("Please enter the number");
       return;
     }
 
@@ -50,9 +50,9 @@ export default function EditDetailsForm({ room }) {
       temperature < room.temperatureRange.min ||
       temperature > room.temperatureRange.max
     ) {
-      // toast.error(
-      //   "Temperature must be within the allowed range. See the Settings."
-      // );
+      toast.error(
+        "Temperature must be within the allowed range. See the Settings."
+      );
       setTemperature(
         Math.max(
           room.temperatureRange.min,
@@ -66,9 +66,9 @@ export default function EditDetailsForm({ room }) {
       humidity < room.humidityRange.min ||
       humidity > room.humidityRange.max
     ) {
-      // toast.error(
-      //   "Humidity must be within the allowed range. See the Settings."
-      // );
+      toast.error(
+        "Humidity must be within the allowed range. See the Settings."
+      );
       setHumidity(
         Math.max(
           room.humidityRange.min,
@@ -99,9 +99,9 @@ export default function EditDetailsForm({ room }) {
       const updatedRoom = await response.json();
       setRoomData(updatedRoom);
 
-      // toast.success("Changes saved");
+      toast.success("Changes saved");
     } catch (error) {
-      // toast.error("Cannot update parameters");
+      toast.error("Cannot update parameters");
     }
   }
 

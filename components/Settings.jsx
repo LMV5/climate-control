@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Button from "@/components/Button";
 
 export default function Settings({ settingsData }) {
@@ -47,7 +47,7 @@ export default function Settings({ settingsData }) {
           setHumidityRange(settings.humidityRange);
         }
       } catch (error) {
-        // toast.error("Error fetching settings");
+        toast.error("Error fetching settings");
       }
     }
 
@@ -80,10 +80,10 @@ export default function Settings({ settingsData }) {
       const result = await response.json();
       console.log("Response from server:", result);
 
-      // toast.success("Changes saved");
+      toast.success("Changes saved");
     } catch (error) {
       console.error("Error saving settings:", error);
-      // toast.error("Cannot save settings");
+      toast.error("Cannot save settings");
     }
   }
 
