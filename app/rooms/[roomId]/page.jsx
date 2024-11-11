@@ -6,7 +6,7 @@ import { getSettings } from "@/utils/getSettings";
 
 const Page = async ({ params }) => {
   await connectDB();
-  const { roomId } = params;
+  const { roomId } = await params;
 
   const room = await getRoom(roomId);
   const roomHistory = await getRoomHistory(roomId);
@@ -19,7 +19,7 @@ const Page = async ({ params }) => {
 
   const cleanRoom = {
     ...room,
-    _id: room._id,
+    _id: room._id.toString(),
   };
 
   return (
