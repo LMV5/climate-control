@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <div className="flex flex-col items-center pt-20">
       <h1 className="text-paleGrey mb-6 text-center text-3xl uppercase tracking-wide pl-2 pr-2">
-        Welcome to Climate Control App!
+        Welcome to Climate Control App! 🌡️
       </h1>
       <Button onClick={handleClick} variant="primary">
         Manage Rooms &rArr;
