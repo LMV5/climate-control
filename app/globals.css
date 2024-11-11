@@ -31,4 +31,39 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body {
+  font-size: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+nav {
+  align-self: end;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: var(--paleGrey);
 }
