@@ -83,8 +83,6 @@ export default function Settings({ settingsData }) {
       humidityRange,
     };
 
-    console.log("Sending updated data:", updatedData);
-
     try {
       const response = await fetch("/api/settings", {
         method: "PUT",
@@ -97,9 +95,6 @@ export default function Settings({ settingsData }) {
       if (!response.ok) {
         throw new Error("Cannot save settings");
       }
-
-      const result = await response.json();
-      console.log("Response from server:", result);
 
       setMessageType("success");
       setMessage("Settings saved successfully");
@@ -117,7 +112,7 @@ export default function Settings({ settingsData }) {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto max-w-[305] rounded-lg p-5 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
+        className="mx-auto max-w-[305px] rounded-lg p-5 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
       >
         <div className="mb-5 grid grid-cols-2 gap-4 rounded-md p-4 shadow-sm">
           <p className="text-paleGrey col-span-2 text-lg tracking-wide">
