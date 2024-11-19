@@ -18,17 +18,35 @@ export default function Settings({ settingsData }) {
 
   const handleTemperatureRangeChange = (e) => {
     const { name, value } = e.target;
+
+    if (value === "") {
+      setTemperatureRange((prevRange) => ({
+        ...prevRange,
+        [name]: "",
+      }));
+      return;
+    }
+
     setTemperatureRange((prevRange) => ({
       ...prevRange,
-      [name]: parseInt(value),
+      [name]: parseInt(value, 10),
     }));
   };
 
   const handleHumidityRangeChange = (e) => {
     const { name, value } = e.target;
+
+    if (value === "") {
+      setHumidityRange((prevRange) => ({
+        ...prevRange,
+        [name]: "",
+      }));
+      return;
+    }
+
     setHumidityRange((prevRange) => ({
       ...prevRange,
-      [name]: parseInt(value),
+      [name]: parseInt(value, 10),
     }));
   };
 
@@ -84,11 +102,11 @@ export default function Settings({ settingsData }) {
       console.log("Response from server:", result);
 
       setMessageType("success");
-      setMessage("Changes saved");
+      setMessage("Settings saved successfully");
     } catch (error) {
       console.error("Error saving settings:", error);
       setMessageType("error");
-      setMessage("Cannot save settings");
+      setMessage("Failed to save settings");
     }
   }
 
@@ -99,7 +117,7 @@ export default function Settings({ settingsData }) {
       </h2>
       <form
         onSubmit={handleSubmit}
-        className="mx-auto max-w-lg rounded-lg p-5 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
+        className="mx-auto max-w-[305] rounded-lg p-5 shadow-[0_1px_5px_rgba(178,178,178,0.2)]"
       >
         <div className="mb-5 grid grid-cols-2 gap-4 rounded-md p-4 shadow-sm">
           <p className="text-paleGrey col-span-2 text-lg tracking-wide">

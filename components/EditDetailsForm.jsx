@@ -133,7 +133,7 @@ export default function EditDetailsForm({ room }) {
           <h3 className="text-paleGrey pb-5 text-center uppercase tracking-wider">
             Temperature:
             <input
-              type="number"
+              type="text"
               value={temperature}
               onChange={handleTemperatureChange}
               className="focus:border-paleYellow bg-darkBlue border-paleGrey text-paleGrey mt-1 w-full rounded-md border p-2 text-base focus:shadow-[0_0_10px_rgba(243,249,210,1)] focus:outline-none"
@@ -142,7 +142,7 @@ export default function EditDetailsForm({ room }) {
           <h3 className="text-paleGrey pb-5 text-center uppercase tracking-wider">
             Humidity:{" "}
             <input
-              type="number"
+              type="text"
               step={5}
               value={humidity}
               onChange={handleHumidityChange}
