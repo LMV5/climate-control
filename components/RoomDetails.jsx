@@ -1,7 +1,7 @@
 import EditDetailsForm from "./EditDetailsForm";
 import RoomHistory from "./RoomHistory";
 
-function RoomDetails({ room, roomHistory, settings }) {
+function RoomDetails({ room, roomHistory }) {
   return (
     <>
       <h2 className="text-paleGrey mb-6 text-center text-2xl uppercase tracking-widest">
@@ -12,7 +12,7 @@ function RoomDetails({ room, roomHistory, settings }) {
           <EditDetailsForm room={room} />
         </div>
         <div className="min-w-[20rem] ssm:min-w-[30rem] max-w-[30rem] ssm:max-w-[50rem] flex-1">
-          <RoomHistory roomHistory={roomHistory} settings={settings} />
+          <RoomHistory roomHistory={roomHistory} />
         </div>
       </div>
     </>
