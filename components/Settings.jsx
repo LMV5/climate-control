@@ -31,6 +31,7 @@ export default function Settings({ settingsData }) {
       ...prevRange,
       [name]: parseInt(value, 10),
     }));
+    setMessage("");
   };
 
   const handleHumidityRangeChange = (e) => {
@@ -48,6 +49,7 @@ export default function Settings({ settingsData }) {
       ...prevRange,
       [name]: parseInt(value, 10),
     }));
+    setMessage("");
   };
 
   useEffect(() => {

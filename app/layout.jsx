@@ -1,5 +1,6 @@
 import "./globals.css";
 import NavBar from "@/components/NavBar";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   title: "Climate Control Hub",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <NavBar />
         <main>{children}</main>
+        <Analytics />
       </body>
     </html>
   );
