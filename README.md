@@ -1,6 +1,8 @@
 # Climate-Control App.
 Climate Control App is a web application designed to help users monitor and adjust the climate in their homes or workplaces.
 
+![CC app](https://github.com/user-attachments/assets/924c1eef-a11d-46f2-bbdd-8f34428f7de9)
+
 ## Usage:
 - Open [this URL](climate-control-app.vercel.app) in a web browser to launch the application.
 
